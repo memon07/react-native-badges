@@ -1,26 +1,46 @@
 import * as React from 'react'
 import { Button, NativeModules, StyleSheet, Text, View } from 'react-native'
 
-export const addOne = (input: number) => input + 1
-
-export const Counter = () => {
-  const [count, setCount] = React.useState(0)
-
-  return (
-    <View style={styles.container}>
-      <Text>You pressed {count} times</Text>
-      <Button onPress={() => setCount(addOne(count))} title='Press Me' />
-    </View>
-  )
+interface BadgeProperties {
+  MainViewStyle?: object;
+  MainElement: object;
+  Hidden?: boolean;
+  IconBadgeStyle?: object;
+  BadgeElement: object;
 }
 
+const IconBadge = React.memo(({MainViewStyle,
+  MainElement = {},
+  Hidden = true,
+  IconBadgeStyle = {},
+  BadgeElement}: BadgeProperties) => {
+
+    return (
+      <View style={[MainViewStyle || {}]}>
+        {MainElement}
+        {!Hidden && (
+          <View style={[styles.IconBadge, IconBadgeStyle || {}]}>
+            {BadgeElement}
+          </View>
+        )}
+      </View>
+    );
+
+})
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  IconBadge: {
+    position: 'absolute',
+    top: 1,
+    right: 1,
+    minWidth: 20,
+    height: 20,
+    borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 200,
+    backgroundColor: '#FF0000',
   },
-})
+});
+
 
 export default NativeModules.RNBadgesModule
