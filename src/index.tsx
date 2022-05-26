@@ -9,7 +9,7 @@ interface BadgeProperties {
   BadgeElement: object;
 }
 
-const IconBadge = React.memo(({MainViewStyle,
+export const IconBadge = React.memo(({MainViewStyle,
   MainElement = {},
   Hidden = true,
   IconBadgeStyle = {},
