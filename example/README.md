@@ -1,46 +1,73 @@
-# example
+# react-native-badge
 
-## Getting Started
+Icon badge is used to create icon badge on some element, such as avatar, icon, image.... The badge is used to give some alert to user of specific element.
 
-```bash
-yarn
-```
+## How to use
 
-for iOS:
+Install package:
 
 ```bash
-npx pod-install
+npm install --save react-native-badge
 ```
 
-To run the app use:
+Import to your app:
 
-```bash
-yarn ios
+```javascript
+...
+import IconBadge from 'react-native-badge';
+...
 ```
 
-or
+Use the component:
 
-```bash
-yarn android
+```javascript
+const [badgeCount, setBadgeCount] = React.useState(0)
 ```
 
-## Updating project
-
-1. Remove current `example` project
-2. Create a project named `example` using [react-native-better-template](https://github.com/demchenkoalex/react-native-better-template)
-3. Revert `README.md` so you can see this guide
-4. In `tsconfig.json` add
-
-```json
-"baseUrl": ".",
-"paths": {
-  "react-native-module-template": ["../src"]
-},
+```javascript
+<View
+  style={{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <IconBadge
+    MainElement={
+      <View
+        style={{ backgroundColor: '#489EFE', width: 50, height: 50, margin: 6 }}
+      />
+    }
+    BadgeElement={<Text style={{ color: '#FFFFFF' }}>{badgeCount}</Text>}
+    IconBadgeStyle={{ width: 30, height: 30, backgroundColor: '#FF00EE' }}
+    Hidden={badgeCount == 0}
+  />
+</View>
 ```
 
-5. Check the difference in `metro.config.js` and combine all
-6. Revert `App.tsx`
-7. Check the difference in `settings.gradle` and combine all
-8. Check the difference in `android/app/build.gradle` and combine all
-9. Check the difference in `MainApplication.kt` and combine all
-10. Open new `example` project in Xcode, right click on the `Libraries` folder, select "Add Files to". Navigate to the library root, `ios` folder, select `RNModuleTemplateModule.xcodeproj`. Deselect "Copy items if needed", click add. Go to the `Build Phases` of the `example` target, "Link Binary with Libraries", click +, search for the `libRNModuleTemplateModule.a`, click add.
+## API
+
+API table
+
+| API name       | Usage                                     |
+| -------------- | ----------------------------------------- |
+| MainElement    | The background element.                   |
+| BadgeElement   | The badge element, normally it is a Text. |
+| IconBadgeStyle | Customized badge style.(Optional)         |
+| Hidden         | Hides badge.(Optional)                    |
+
+## Default badge style
+
+```css
+IconBadge: {
+  position:'absolute',
+  top:1,
+  right:1,
+  minWidth:20,
+  height:20,
+  borderRadius:15,
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#FF0000'
+}
+```
