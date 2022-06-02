@@ -1,5 +1,7 @@
 # react-native-badges
 
+[![view on npm](https://img.shields.io/badge/npm-1.0.0-blue)](https://www.npmjs.com/package/react-native-badges)
+
 Icon badge is used to create icon badge on some element, such as avatar, icon, image.... The badge is used to give some alert to user of specific element.
 
 ## How to use
