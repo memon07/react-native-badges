@@ -70,6 +70,6 @@ IconBadge: {
   borderRadius:15,
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: '#FF0000'
+  backgroundColor: 'red'
 }
 ```
