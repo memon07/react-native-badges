@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Button, NativeModules, StyleSheet, Text, View } from 'react-native'
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 
 interface BadgeProperties {
   MainViewStyle?: object;
@@ -15,13 +16,21 @@ export const IconBadge = React.memo(({MainViewStyle,
   IconBadgeStyle = {},
   BadgeElement}: BadgeProperties) => {
 
+    const rotate = useSharedValue(0);
+
+    const reanimatedStyle = useAnimatedStyle(() => {
+      return {
+        transform: [{rotate: `${1}deg`}]
+      }
+    },[])
+
     return (
       <View style={[MainViewStyle || {}]}>
         {MainElement}
         {!Hidden && (
-          <View style={[styles.IconBadge, IconBadgeStyle || {}]}>
+          <Animated.View style={[styles.IconBadge, IconBadgeStyle || {}]}>
             {BadgeElement}
-          </View>
+          </Animated.View>
         )}
       </View>
     );

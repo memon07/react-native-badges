@@ -63,5 +63,8 @@
       "json",
       "node"
     ]
+  },
+  "dependencies": {
+    "react-native-reanimated": "^2.8.0"
   }
 }
